@@ -47,17 +47,20 @@
     },
     "FORCE_SUB_CHANNEL_2": {
       "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
-    },
+      "value": "-100"
+   },
     "FORCE_SUB_CHANNEL_3": {
       "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
-    },
+      "value": "-100"
+   },
     "FORCE_SUB_CHANNEL_4": {
       "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
-     },
+      "value": "-100"
+   },
     "FORCE_SUB_CHANNEL_5": {
       "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
-      "value": "-100" "value": "-100" "value": "-100" "value": "-100"
-    },
+      "value": "-100"
+   },
     "START_MESSAGE": {
       "description": "Pesan /start memulai awalan ke bot, Gunakan format parsemode HTML",
       "value": "<b>Hello {first}\n\nSaya dapat menyimpan file pribadi di Channel Tertentu dan pengguna lain dapat mengaksesnya dari link khusus.</b>"
@@ -68,12 +71,12 @@
     },
     "CHANNEL":{
       "description": "Masukan Username Channel anda Untuk Wajib Subscribenya [ Jangan Pake @ ]",
-      "value": "ZaenSupport",
+      "value": "NAUNGANBEBEK",
       "required": false
     },
     "GROUP":{
       "description": "Masukan Username dari Group anda Untuk Wajib Subscribenya [ Jangan Pake @ ]",
-      "value": "ZaenSupport",
+      "value": "demusplace",
       "required": false
    } 
   },
