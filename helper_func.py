@@ -1,6 +1,6 @@
 # (©)Codexbotz
-# Recode by @UnrealZlda
-# t.me/ZeldaProjects
+# Recode by @putraicipiyey
+# t.me/NAUNGANBEBEK
 
 import asyncio
 import base64
