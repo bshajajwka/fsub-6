@@ -6,8 +6,8 @@
     "file",
     "sharing"
   ],
-  "repository": "https://github.com/Zaen67/File-Sharing-Bot",
-  "logo": "https://telegra.ph/file/c168ea48b97c702017ead.jpg",
+  "repository": "https://github.com/putraicipiyey/fsub-6",
+  "logo": "https://telegra.ph/file/c9458fe65e5aa9714b191.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Masukan Bot token, Dapatkan dari t.me/BotFather",
@@ -41,17 +41,22 @@
       "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
       "value": "-100"
     },
-    "FORCE_SUB_CHANNEL1": {
-      "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
-      "value": "-100"
-    },
     "FORCE_SUB_GROUP": {
       "description": "Masukan ID dari Group Untuk Wajib Subscribenya",
       "value": "-100"
     },
-    "FORCE_SUB_GROUP1": {
-      "description": "Masukan ID dari Group Untuk Wajib Subscribenya",
-      "value": "-100"
+    "FORCE_SUB_CHANNEL2": {
+      "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
+    },
+    "FORCE_SUB_CHANNEL3": {
+      "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
+    },
+    "FORCE_SUB_CHANNEL4": {
+      "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
+     },
+    "FORCE_SUB_CHANNEL5": {
+      "description": "Masukan ID dari Channel Atau Group Untuk Wajib Subscribenya",
+      "value": "-100" "value": "-100" "value": "-100" "value": "-100"
     },
     "START_MESSAGE": {
       "description": "Pesan /start memulai awalan ke bot, Gunakan format parsemode HTML",
