@@ -133,9 +133,140 @@ async def start_command(client: Bot, message: Message):
     return
 
 
+
+@Bot.on_message(filters.command("start") & filters.private & subscribed)
+async def start_command(client: Client, message: Message):
+    id = message.from_user.id
+    user_name = "@" + message.from_user.username if message.from_user.username else None
+    try:
+        await add_user(id, user_name)
+    except:
+        pass
+    text = message.text
+    if len(text) > 7:
+        try:
+            base64_string = text.split(" ", 1)[1]
+        except BaseException:
+            return
+        string = await decode(base64_string)
+        argument = string.split("-")
+        if len(argument) == 3:
+            try:
+                start = int(int(argument[1]) / abs(client.db_channel.id))
+                end = int(int(argument[2]) / abs(client.db_channel.id))
+            except BaseException:
+                return
+            if start <= end:
+                ids = range(start, end + 1)
+            else:
+                ids = []
+                i = start
+                while True:
+                    ids.append(i)
+                    i -= 1
+                    if i < end:
+                        break
+        elif len(argument) == 2:
+            try:
+                ids = [int(int(argument[1]) / abs(client.db_channel.id))]
+            except BaseException:
+                return
+        temp_msg = await message.reply("<code>Tunggu Sebentar...</code>")
+        try:
+            messages = await get_messages(client, ids)
+        except BaseException:
+            await message.reply_text("<b>Telah Terjadi Error </b>🥴")
+            return
+        await temp_msg.delete()
+
+        for msg in messages:
+
+            if bool(CUSTOM_CAPTION) & bool(msg.document):
+                caption = CUSTOM_CAPTION.format(
+                    previouscaption="" if not msg.caption else msg.caption.html,
+                    filename=msg.document.file_name,
+                )
+            else:
+                caption = "" if not msg.caption else msg.caption.html
+
+            reply_markup = msg.reply_markup if DISABLE_CHANNEL_BUTTON else None
+            try:
+                await msg.copy(
+                    chat_id=message.from_user.id,
+                    caption=caption,
+                    parse_mode="html",
+                    reply_markup=reply_markup,
+                )
+                await asyncio.sleep(0.5)
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+                await msg.copy(
+                    chat_id=message.from_user.id,
+                    caption=caption,
+                    parse_mode="html",
+                    reply_markup=reply_markup,
+                )
+            except BaseException:
+                pass
+    else:
+        buttons = [
+            [InlineKeyboardButton("🔅 ᴛᴇɴᴛᴀɴɢ sᴀʏᴀ 🔅", callback_data="about")],
+            [
+                InlineKeyboardButton("•ᴄʜᴀɴɴᴇʟ•", url=client.invitelink),
+                InlineKeyboardButton("•ɢʀᴜᴘ•", url=client.invitelink2),
+            ],
+            [
+                InlineKeyboardButton("•ᴄʜᴀɴɴᴇʟ•", url=client.invitelink3),
+                
+            ],  
+            [
+                InlineKeyboardButton("🔅 ᴛᴜᴛᴜᴘ 🔅", callback_data="close"),
+            ],
+        ]
+        await message.reply_text(
+            text=START_MSG.format(
+                first=message.from_user.first_name,
+                last=message.from_user.last_name,
+                username=None
+                if not message.from_user.username
+                else "@" + message.from_user.username,
+                mention=message.from_user.mention,
+                id=message.from_user.id,
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True,
+            quote=True,
+        )
+
+    return
+
+
+    
+    
 @Bot.on_message(filters.command("start") & filters.private)
-async def not_joined(client: Bot, message: Message):
-    buttons = fsub_button(client, message)
+async def not_joined(client: Client, message: Message):
+    buttons = [
+        [
+            InlineKeyboardButton("•ᴄʜᴀɴɴᴇʟ•", url=client.invitelink), 
+            InlineKeyboardButton("•ɢʀᴜᴘ•", url=client.invitelink2),
+        ],
+        [
+            InlineKeyboardButton("•ᴄʜᴀɴɴᴇʟ•", url=client.invitelink3), 
+            
+        ],
+    ]
+    try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text="🔅ᴄᴏʙᴀ ʟᴀɢɪ🔅",
+                    url=f"https://t.me/{client.username}?start={message.command[1]}",
+                )
+            ]
+        )
+    except IndexError:
+        pass
+
     await message.reply(
         text=FORCE_MSG.format(
             first=message.from_user.first_name,
@@ -150,6 +281,7 @@ async def not_joined(client: Bot, message: Message):
         quote=True,
         disable_web_page_preview=True,
     )
+
 
 
 @Bot.on_message(filters.command(["users", "stats"]) & filters.user(ADMINS))
