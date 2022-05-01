@@ -45,7 +45,7 @@ class Bot(Client):
         except Exception as a:
             self.LOGGER(__name__).warning(a)
             self.LOGGER(__name__).info(
-                "Bot Berhenti. Gabung Group https://t.me/ZeldaProjects untuk Bantuan"
+                "Bot Berhenti. Gabung Group t.me/putraicipiyey untuk Bantuan"
             )
             sys.exit()
 
