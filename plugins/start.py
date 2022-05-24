@@ -225,7 +225,7 @@ async def start_command(client: Client, message: Message):
             ],
             [
                 
-                InlineKeyboardButton("🔅 ᴛᴜᴛᴜᴘ 🔅", callback_data="close"),
+                InlineKeyboardButton(" ᴛᴜᴛᴜᴘ ", callback_data="close"),
             ],
         ]
         await message.reply_text(
@@ -270,7 +270,7 @@ async def not_joined(client: Client, message: Message):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text="🔅ᴄᴏʙᴀ ʟᴀɢɪ🔅",
+                    text="ᴄᴏʙᴀ ʟᴀɢɪ",
                     url=f"https://t.me/{client.username}?start={message.command[1]}",
                 )
             ]
